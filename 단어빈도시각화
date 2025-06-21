@@ -1,0 +1,52 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOrHT4unjbeqH1He7E4dEwe",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seoyoung0501/calculator-python/blob/main/%EB%8B%A8%EC%96%B4%EB%B9%88%EB%8F%84%EC%8B%9C%EA%B0%81%ED%99%94\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "FVNdE6NG3NFc"
+      },
+      "outputs": [],
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "from collections import Counter\n",
+        "\n",
+        "def plot_word_freq(text):\n",
+        "    words = text.lower().split()\n",
+        "    counter = Counter(words)\n",
+        "    common = counter.most_common(5)\n",
+        "    words, counts = zip(*common)\n",
+        "    plt.bar(words, counts)\n",
+        "    plt.show()\n",
+        "\n",
+        "plot_word_freq(\"파이썬은 정말 재미있다 파이썬을 공부하자 재미있다\")\n"
+      ]
+    }
+  ]
+}
