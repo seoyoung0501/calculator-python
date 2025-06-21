@@ -1,0 +1,52 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNnT7m87N4xNXz12LY7TUkc",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seoyoung0501/calculator-python/blob/main/HTTP%20%EC%83%81%ED%83%9C%20%EC%BD%94%EB%93%9C%20%EC%B2%B4%ED%81%AC%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "PJfmJ7kw4ldC"
+      },
+      "outputs": [],
+      "source": [
+        "import requests\n",
+        "\n",
+        "def check_status(url):\n",
+        "    try:\n",
+        "        response = requests.get(url)\n",
+        "        print(f\"{url} 상태 코드: {response.status_code}\")\n",
+        "    except requests.RequestException as e:\n",
+        "        print(f\"요청 중 오류 발생: {e}\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    url = input(\"URL 입력 (http:// 또는 https:// 포함): \")\n",
+        "    check_status(url)"
+      ]
+    }
+  ]
+}
