@@ -1,0 +1,91 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPPekMAlYS4IMkg9pHCWvWO",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seoyoung0501/calculator-python/blob/main/%EA%B0%9C%EC%9D%B8%EC%9D%BC%EC%A0%95%EA%B4%80%EB%A6%AC%EC%BD%98%EC%86%94%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "vPazOtdH4UwM"
+      },
+      "outputs": [],
+      "source": [
+        "import json\n",
+        "import os\n",
+        "\n",
+        "FILE_NAME = \"schedule.json\"\n",
+        "\n",
+        "def load_schedule():\n",
+        "    if os.path.exists(FILE_NAME):\n",
+        "        with open(FILE_NAME, \"r\", encoding=\"utf-8\") as f:\n",
+        "            return json.load(f)\n",
+        "    return {}\n",
+        "\n",
+        "def save_schedule(schedule):\n",
+        "    with open(FILE_NAME, \"w\", encoding=\"utf-8\") as f:\n",
+        "        json.dump(schedule, f, indent=2, ensure_ascii=False)\n",
+        "\n",
+        "def add_event(schedule):\n",
+        "    date = input(\"날짜 입력 (YYYY-MM-DD): \")\n",
+        "    event = input(\"일정 내용 입력: \")\n",
+        "    if date in schedule:\n",
+        "        schedule[date].append(event)\n",
+        "    else:\n",
+        "        schedule[date] = [event]\n",
+        "    print(\"일정 추가 완료!\")\n",
+        "\n",
+        "def view_events(schedule):\n",
+        "    date = input(\"날짜 입력 (YYYY-MM-DD): \")\n",
+        "    events = schedule.get(date, [])\n",
+        "    if events:\n",
+        "        print(f\"{date} 일정:\")\n",
+        "        for i, e in enumerate(events, 1):\n",
+        "            print(f\"{i}. {e}\")\n",
+        "    else:\n",
+        "        print(\"일정이 없습니다.\")\n",
+        "\n",
+        "def main():\n",
+        "    schedule = load_schedule()\n",
+        "    while True:\n",
+        "        cmd = input(\"명령어 입력 (add/view/exit): \").strip().lower()\n",
+        "        if cmd == \"add\":\n",
+        "            add_event(schedule)\n",
+        "            save_schedule(schedule)\n",
+        "        elif cmd == \"view\":\n",
+        "            view_events(schedule)\n",
+        "        elif cmd == \"exit\":\n",
+        "            print(\"프로그램 종료\")\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"알 수 없는 명령어입니다.\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()"
+      ]
+    }
+  ]
+}
