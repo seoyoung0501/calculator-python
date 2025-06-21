@@ -1,0 +1,56 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPgM+uQGkZJYqQZM/etSA69",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seoyoung0501/calculator-python/blob/main/%EA%B8%88%EC%9C%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%84%EB%8B%A8%EC%8B%9C%EA%B0%81%ED%99%94\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "AFBmQkxB4s7p"
+      },
+      "outputs": [],
+      "source": [
+        "import yfinance as yf\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "def plot_stock(ticker):\n",
+        "    data = yf.download(ticker, period=\"1mo\", interval=\"1d\")\n",
+        "    if data.empty:\n",
+        "        print(\"데이터를 불러올 수 없습니다.\")\n",
+        "        return\n",
+        "    data['Close'].plot(title=f\"{ticker} 최근 1개월 종가\")\n",
+        "    plt.xlabel(\"날짜\")\n",
+        "    plt.ylabel(\"종가 (USD)\")\n",
+        "    plt.show()\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    ticker = input(\"종목 티커 입력 (예: AAPL, TSLA): \").upper()\n",
+        "    plot_stock(ticker)"
+      ]
+    }
+  ]
+}
