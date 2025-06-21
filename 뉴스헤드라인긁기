@@ -1,0 +1,49 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP8q09qhm5EGrI8ANUXbpjy",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seoyoung0501/calculator-python/blob/main/%EB%89%B4%EC%8A%A4%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8%EA%B8%81%EA%B8%B0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "kROx2mY12LRa"
+      },
+      "outputs": [],
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "\n",
+        "def get_news_headlines(url):\n",
+        "    res = requests.get(url)\n",
+        "    soup = BeautifulSoup(res.text, 'html.parser')\n",
+        "    headlines = soup.select('h2')\n",
+        "    for i, h in enumerate(headlines[:5], 1):\n",
+        "        print(f\"{i}. {h.get_text()}\")"
+      ]
+    }
+  ]
+}
